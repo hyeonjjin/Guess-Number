@@ -1,37 +1,37 @@
-dbfilename = 'test3_4.dat'
+	dbfilename = 'test3_4.dat'
 
-def readScoreDB():
-    try:
-        fH = open(dbfilename, 'rb')
-    except FileNotFoundError as e:
-        print("New DB: ", dbfilename)
-        return []
+	def readScoreDB():
+    	try:
+        	fH = open(dbfilename, 'rb')
+    	except FileNotFoundError as e:
+        	print("New DB: ", dbfilename)
+        	return []
 
-    scdb = []
-    try:
-        scdb =  pickle.load(fH)
+    	scdb = []
+    	try:
+        	scdb =  pickle.load(fH)
 
-    except:
-        print("Empty DB: ", dbfilename)
-    else:
-        print("Open DB: ", dbfilename)
-    fH.close()
-    return scdb
+    	except:
+        	print("Empty DB: ", dbfilename)
+    	else:
+        	print("Open DB: ", dbfilename)
+    	fH.close()
+    	return scdb
 =>dbfilename으로 되어있는 파일이 같은 경로내에 존재하면 이진수로 읽습니다. 하지만 존재하지 않는다면 예외처리를 통해 
   문제를 해결합니다. 언피클링을 통해 파일 내용을 객체로 변환시켜줍니다. 만약 비어있다면 예외처리를 통해 문제를 해결합니다.
 
 
-def writeScoreDB(scdb):
-    fH = open(dbfilename, 'wb')
-    pickle.dump(scdb, fH)
-    fH.close()
+	def writeScoreDB(scdb):
+    	fH = open(dbfilename, 'wb')
+    	pickle.dump(scdb, fH)
+    	fH.close()
 =>피클링을 통해 변경된 내용을 파일로 저장합니다.
 
 
 
- inputstr = (input("Score DB > "))
-        if inputstr == "": continue
-        parse = inputstr.split(" ")
+ 	inputstr = (input("Score DB > "))
+        	if inputstr == "": continue
+        	parse = inputstr.split(" ")
 =>어떤 사건을 실행할지 입력하고 만약 아무것도 입력하지 않았다면 다시 입력합니다. 
 그 후에 inputstr을 띄어쓰기 단위로 나누어 parse에 저장합니다.
 
